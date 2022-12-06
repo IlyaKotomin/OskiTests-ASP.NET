@@ -1,6 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using OskiTests.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDataBaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
