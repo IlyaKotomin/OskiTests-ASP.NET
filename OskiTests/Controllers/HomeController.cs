@@ -20,7 +20,7 @@ namespace OskiTests.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var quizzesData = await _context.Quizzes.ToListAsync();
+            var quizzesData = await _context.Quizzes.Include(n => n.Questions).ToListAsync();
             return View(quizzesData);
         }
 
