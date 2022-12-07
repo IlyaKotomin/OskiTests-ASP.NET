@@ -3,9 +3,9 @@ using OskiTests.Models;
 
 namespace OskiTests.Data
 {
-    public class AppDataBaseContext : DbContext
+    public class AppDatabaseContext : DbContext
     {
-        public AppDataBaseContext(DbContextOptions<AppDataBaseContext> options)
+        public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options)
             : base(options)
         {
 

@@ -4,7 +4,7 @@ using OskiTests.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDataBaseContext>(options =>
+builder.Services.AddDbContext<AppDatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 builder.Services.AddControllersWithViews();

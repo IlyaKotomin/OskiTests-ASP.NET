@@ -8,7 +8,7 @@ namespace OskiTests.Data
         {
             using (var serviceScope = builder.ApplicationServices.CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<AppDataBaseContext>()!;
+                var context = serviceScope.ServiceProvider.GetService<AppDatabaseContext>()!;
 
                 context.Database.EnsureCreated();
 

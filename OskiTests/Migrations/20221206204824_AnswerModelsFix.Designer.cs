@@ -11,7 +11,7 @@ using OskiTests.Data;
 
 namespace OskiTests.Migrations
 {
-    [DbContext(typeof(AppDataBaseContext))]
+    [DbContext(typeof(AppDatabaseContext))]
     [Migration("20221206204824_AnswerModelsFix")]
     partial class AnswerModelsFix
     {

@@ -10,7 +10,7 @@ using OskiTests.Data;
 
 namespace OskiTests.Migrations
 {
-    [DbContext(typeof(AppDataBaseContext))]
+    [DbContext(typeof(AppDatabaseContext))]
     partial class AppDataBaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
