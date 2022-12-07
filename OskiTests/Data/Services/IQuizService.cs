@@ -2,7 +2,7 @@
 
 namespace OskiTests.Data.Services
 {
-    public interface IQuizeService
+    public interface IQuizService
     {
         public IEnumerable<QuizViewModel> GetAllQuizzes();
 
