@@ -16,10 +16,13 @@ namespace OskiTests.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<AnswerViewModel> AnswerViewModels { get; set; }
+        public DbSet<AnswerViewModel> Answers { get; set; }
 
-        public DbSet<QuestionViewModel> QuestionViewModels { get; set; }
+        public DbSet<QuestionViewModel> Questions { get; set; }
 
-        public DbSet<QuizViewModel> QuizViewModels { get; set; }
+        public DbSet<QuizViewModel> Quizzes { get; set; }
+
+        public DbSet<UserViewModel> Users { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OskiTests.Data;
 
@@ -11,9 +12,11 @@ using OskiTests.Data;
 namespace OskiTests.Migrations
 {
     [DbContext(typeof(AppDataBaseContext))]
-    partial class AppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221207155509_UserModelsAdded")]
+    partial class UserModelsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,7 @@ namespace OskiTests.Migrations
 
                     b.HasIndex("QuestionViewModelId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("AnswerModels");
                 });
 
             modelBuilder.Entity("OskiTests.Models.QuestionViewModel", b =>
@@ -64,7 +67,7 @@ namespace OskiTests.Migrations
 
                     b.HasIndex("QuizViewModelId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("QuestionModels");
                 });
 
             modelBuilder.Entity("OskiTests.Models.QuizViewModel", b =>
@@ -88,7 +91,7 @@ namespace OskiTests.Migrations
 
                     b.HasIndex("UserViewModelId");
 
-                    b.ToTable("Quizzes");
+                    b.ToTable("QuizModels");
                 });
 
             modelBuilder.Entity("OskiTests.Models.UserViewModel", b =>
@@ -113,7 +116,7 @@ namespace OskiTests.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("UserModels");
                 });
 
             modelBuilder.Entity("OskiTests.Models.AnswerViewModel", b =>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OskiTests.Data;
 
@@ -11,9 +12,11 @@ using OskiTests.Data;
 namespace OskiTests.Migrations
 {
     [DbContext(typeof(AppDataBaseContext))]
-    partial class AppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221207155737_RenameProps")]
+    partial class RenameProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
