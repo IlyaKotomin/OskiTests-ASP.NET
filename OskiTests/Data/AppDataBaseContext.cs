@@ -23,6 +23,5 @@ namespace OskiTests.Data
         public DbSet<QuizViewModel> Quizzes { get; set; }
 
         public DbSet<UserViewModel> Users { get; set; }
-
     }
 }

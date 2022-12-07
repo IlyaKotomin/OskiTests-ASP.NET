@@ -15,6 +15,6 @@ namespace OskiTests.Models
 
         public string? Password { get; set; }
 
-        public List<QuizViewModel>? CompliteQuizzes { get; set; }
+        public List<QuizViewModel>? ComplitedQuizzes { get; set; }
     }
 }
