@@ -13,35 +13,6 @@ namespace OskiTests.Data
                 context.Database.EnsureCreated();
 
 
-                //Answers
-                if (!context.AnswerViewModels.Any())
-                {
-                    context.AnswerViewModels.AddRange(new List<AnswerViewModel>()
-                    {
-                        new AnswerViewModel()
-                        {
-                            Content = "Correct Answer",
-                            IsCorrect = true,
-                        },
-                        new AnswerViewModel()
-                        {
-                            Content = "",
-                            IsCorrect = true,
-                        },
-                        new AnswerViewModel()
-                        {
-                            Content = "",
-                            IsCorrect = true,
-                        },
-                        new AnswerViewModel()
-                        {
-                            Content = "",
-                            IsCorrect = true,
-                        },
-                    });
-                }
-                //Questions
-                //Quizzes
             }
         }
     }
