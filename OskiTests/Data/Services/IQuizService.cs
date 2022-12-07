@@ -4,7 +4,7 @@ namespace OskiTests.Data.Services
 {
     public interface IQuizService
     {
-        public IEnumerable<QuizViewModel> GetAllQuizzes();
+        public Task<IEnumerable<QuizViewModel>> GetAllQuizzes(bool withQuestions);
 
         public QuizViewModel GetQuizById(int id);
 

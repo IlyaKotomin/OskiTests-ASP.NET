@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OskiTests.Data;
+using OskiTests.Data.Services;
 using OskiTests.Models;
 using System.Diagnostics;
 
@@ -10,17 +11,17 @@ namespace OskiTests.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly AppDatabaseContext _context;
+        private readonly IQuizService _quizService;
 
-        public HomeController(ILogger<HomeController> logger, AppDatabaseContext context)
+        public HomeController(ILogger<HomeController> logger, IQuizService quizService)
         {
             _logger = logger;
-            _context = context;
+            _quizService = quizService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var quizzesData = await _context.Quizzes.Include(n => n.Questions).ToListAsync();
+            var quizzesData = await _quizService.GetAllQuizzes(withQuestions: true);
             return View(quizzesData);
         }
 

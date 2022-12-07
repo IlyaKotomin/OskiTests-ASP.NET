@@ -1,11 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using OskiTests.Data;
+using OskiTests.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+builder.Services.AddScoped<IQuizService, QuizService>();
 
 builder.Services.AddControllersWithViews();
 
@@ -33,3 +37,4 @@ app.MapControllerRoute(
 AppDatabaseInitializer.Seed(app);
 
 app.Run();
+
