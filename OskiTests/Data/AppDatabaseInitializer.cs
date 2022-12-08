@@ -1,12 +1,14 @@
-﻿using OskiTests.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using OskiTests.Data.Static;
+using OskiTests.Models;
 
 namespace OskiTests.Data
 {
     public class AppDatabaseInitializer
     {
-        public static async void Seed(IApplicationBuilder builder)
+        public static async void Seed(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = builder.ApplicationServices.CreateScope())
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDatabaseContext>()!;
 
@@ -158,6 +160,19 @@ namespace OskiTests.Data
                 await context.AddRangeAsync(new List<QuizViewModel>() { testQuiz, testQuiz2 });
 
                 await context.SaveChangesAsync();
+            }
+        }
+        public static async void SeedRoles(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
             }
         }
     }

@@ -25,11 +25,6 @@ namespace OskiTests.Controllers
             return View(quizzesData);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

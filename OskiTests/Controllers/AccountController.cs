@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OskiTests.Data;
@@ -22,12 +23,14 @@ namespace OskiTests.Controllers
             _signInManager = signInManager;
             _context = context;
         }
+
+
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
-
 
         public IActionResult Login() => View(new LoginViewModel());
 
@@ -40,7 +43,7 @@ namespace OskiTests.Controllers
 
             if (user == null)
             {
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                TempData["Error"] = "User didn't registered yet!";
                 return View(loginViewMode);
             }
 
@@ -93,11 +96,10 @@ namespace OskiTests.Controllers
             return View("RegisterCompleted");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            _signInManager.SignOutAsync();
+            return View();
         }
 
         public IActionResult AccessDenied(string returnUrl)

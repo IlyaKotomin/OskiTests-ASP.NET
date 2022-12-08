@@ -1,4 +1,5 @@
-﻿@model IEnumerable<QuizViewModel>
+﻿@using OskiTests.Data.Static;
+@model IEnumerable<QuizViewModel>
 
 @{
 	ViewData["Title"] = "Quizzes!";
@@ -28,7 +29,7 @@
                         <div class="col-md-12">
                             <div class="card-footer">    
                                 <a class="btn btn-outline-success float-start float-md-none">Start</a>
-                                if (User.IsInRole("Admin"))
+                                @if (User.IsInRole(UserRoles.Admin))
                                 {
                                     <a class="btn btn-outline-secondary">Edit</a>
                                     <a class="btn btn-outline-danger float-end">Delate</a>
