@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OskiTests.Data;
 using OskiTests.Data.Services;
+using OskiTests.Models;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +16,11 @@ builder.Services
     .GetConnectionString("DefaultConnectionString")));
 
 builder.Services.AddScoped<IQuizService, QuizService>();
-
 builder.Services.AddControllersWithViews();
 
-builder.Services
-    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(x => x.LoginPath = "/account/login");
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDatabaseContext>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 
 var app = builder.Build();
 

@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OskiTests.Models;
 
 namespace OskiTests.Data
 {
-    public class AppDatabaseContext : DbContext
+    public class AppDatabaseContext : IdentityDbContext<ApplicationUser>
     {
         public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options)
             : base(options)
@@ -22,6 +23,6 @@ namespace OskiTests.Data
 
         public DbSet<QuizViewModel> Quizzes { get; set; }
 
-        public DbSet<UserViewModel> Users { get; set; }
+        public DbSet<LoginViewModel> Loggins { get; set; }
     }
 }
