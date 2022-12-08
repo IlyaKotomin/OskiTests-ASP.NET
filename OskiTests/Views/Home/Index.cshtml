@@ -23,16 +23,19 @@
                             <p class="card-text"><b>Questions number: </b>@quiz.Questions?.Count</p>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="card-footer">
-                            <a class="btn btn-outline-success float-start float-md-none">Start</a>
-                                @if (true)      //(User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                    @if (User.Identity!.IsAuthenticated)      //(User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <div class="col-md-12">
+                            <div class="card-footer">    
+                                <a class="btn btn-outline-success float-start float-md-none">Start</a>
+                                if (User.IsInRole("Admin"))
                                 {
                                     <a class="btn btn-outline-secondary">Edit</a>
                                     <a class="btn btn-outline-danger float-end">Delate</a>
                                 }
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
