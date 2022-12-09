@@ -14,41 +14,31 @@ namespace OskiTests.Data
 
                 context.Database.EnsureCreated();
 
-                if (context.Quizzes.Any())
-                    return;
 
                 QuizViewModel testQuiz = new()
                 {
-                    Name = "This is a test Quiz! (1)",
+                    Name = "This is a test Quiz!eqwe (1)",
                     Description = "Test quiz description! (1)",
                     Questions = new List<QuestionViewModel>()
                     {
                         new()
                         {
                             Question = "First Test Quiz Question (1)!",
+                            CorrectAnswer = "Correct Answer!",
                             Answers = new List<AnswerViewModel>()
                             {
                                 new()
                                 {
-                                    IsCorrect = true,
-                                    Content = "Correct Answer!"
-                                },
-
-                                new()
-                                {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 1"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 2"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 3"
                                 },
                             }
@@ -57,29 +47,21 @@ namespace OskiTests.Data
                         new()
                         {
                             Question = "Second Test Quiz Question (1)!",
+                            CorrectAnswer = "Correct Answer!",
                             Answers = new List<AnswerViewModel>()
                             {
                                 new()
                                 {
-                                    IsCorrect = true,
-                                    Content = "Correct Answer!"
-                                },
-
-                                new()
-                                {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 1"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 2"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 3"
                                 },
                             }
@@ -89,36 +71,28 @@ namespace OskiTests.Data
 
                 QuizViewModel testQuiz2 = new()
                 {
-                    Name = "This is a test Quiz! (2)",
+                    Name = "This is a test Quizqweqwe! (2)",
                     Description = "Test quiz description! (2)",
                     Questions = new List<QuestionViewModel>()
                     {
                         new()
                         {
-                            Question = "First Test Quiz Question (2)!",
+                            Question = "12312314 rqwr????",
+                            CorrectAnswer = "Correct Answer!",
                             Answers = new List<AnswerViewModel>()
                             {
                                 new()
                                 {
-                                    IsCorrect = true,
-                                    Content = "Correct Answer!"
-                                },
-
-                                new()
-                                {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 1"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 2"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 3"
                                 },
                             }
@@ -126,30 +100,22 @@ namespace OskiTests.Data
 
                         new()
                         {
-                            Question = "Second Test Quiz Question (2)!",
+                            Question = "rnjlj4234 234 234 ???",
+                            CorrectAnswer = "Correct Answer!",
                             Answers = new List<AnswerViewModel>()
                             {
                                 new()
                                 {
-                                    IsCorrect = true,
-                                    Content = "Correct Answer!"
-                                },
-
-                                new()
-                                {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 1"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 2"
                                 },
 
                                 new()
                                 {
-                                    IsCorrect = true,
                                     Content = "Not Correct Answer! 3"
                                 },
                             }

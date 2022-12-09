@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OskiTests.Data;
 
@@ -11,9 +12,11 @@ using OskiTests.Data;
 namespace OskiTests.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    partial class AppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221209080128_RedesignQuestion")]
+    partial class RedesignQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,27 +158,6 @@ namespace OskiTests.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OskiTests.Models.AnswerViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("QuestionViewModelId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionViewModelId");
-
-                    b.ToTable("AnswerViewModel");
-                });
-
             modelBuilder.Entity("OskiTests.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -292,6 +274,27 @@ namespace OskiTests.Migrations
                     b.ToTable("Quizzes");
                 });
 
+            modelBuilder.Entity("OskiTests.Models.AnswerViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("QuestionViewModelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionViewModelId");
+
+                    b.ToTable("Answers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -343,13 +346,6 @@ namespace OskiTests.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OskiTests.Models.AnswerViewModel", b =>
-                {
-                    b.HasOne("OskiTests.Models.QuestionViewModel", null)
-                        .WithMany("Answers")
-                        .HasForeignKey("QuestionViewModelId");
-                });
-
             modelBuilder.Entity("OskiTests.Models.QuestionViewModel", b =>
                 {
                     b.HasOne("OskiTests.Models.QuizViewModel", null)
@@ -362,6 +358,13 @@ namespace OskiTests.Migrations
                     b.HasOne("OskiTests.Models.ApplicationUser", null)
                         .WithMany("ComplitedQuizzes")
                         .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("OskiTests.Models.AnswerViewModel", b =>
+                {
+                    b.HasOne("OskiTests.Models.QuestionViewModel", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionViewModelId");
                 });
 
             modelBuilder.Entity("OskiTests.Models.ApplicationUser", b =>

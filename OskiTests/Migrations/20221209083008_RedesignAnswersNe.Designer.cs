@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OskiTests.Data;
 
@@ -11,9 +12,11 @@ using OskiTests.Data;
 namespace OskiTests.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    partial class AppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221209083008_RedesignAnswersNe")]
+    partial class RedesignAnswersNe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,7 +176,7 @@ namespace OskiTests.Migrations
 
                     b.HasIndex("QuestionViewModelId");
 
-                    b.ToTable("AnswerViewModel");
+                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("OskiTests.Models.ApplicationUser", b =>

@@ -9,6 +9,8 @@ namespace OskiTests.Models
 
         public string? Question { get; set; }
 
+        public string? CorrectAnswer { get; set; }
+
         public List<AnswerViewModel>? Answers { get; set; }
     }
 }

@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using OskiTests.Data;
 using OskiTests.Data.Services;
 using OskiTests.Models;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 

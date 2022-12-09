@@ -1,1 +1,56 @@
-﻿@model QuizViewModel
+﻿@using System.Text.Json
+@model QuizViewModel
+
+@{
+
+	ViewData["Title"] = Model.Name;
+}
+
+<script>
+	function changeVisible() {
+		var checkBox1 = document.getElementById("checkBox1");
+		var btn1 = document.getElementById("btn1");
+		
+		if (checkBox1.checked) {
+			btn1.classList.remove("invisible");
+		} else {
+			btn1.classList.add("invisible");
+		}
+	}
+</script>
+
+<div class="row">
+	<div class="col-md-6 offset-3">
+		<div class="row">
+			<p>
+				<h4>@Model.Name</h4>
+			</p>
+			<a><b>Description: </b>@Model.Description</a>
+			<a><b>Qestions count: </b>@Model.Questions!.Count</a>
+
+			<div>
+				<input id="checkBox1" type="checkbox" name="checkBox1" onclick="changeVisible()"/>
+				<label for="checkBox1">I agree to start</label>
+			</div>
+			<div class="form-group">
+				<div>
+					@{
+						var compliteQuestionViewModel = new CompliteQuestionViewModel();
+						compliteQuestionViewModel.Quiz = Model;
+						compliteQuestionViewModel.QuestionViewModel = Model.Questions[0];
+
+						Dictionary<string, string> keyValues = new() { { "compliteQuestionJson", JsonSerializer.Serialize(compliteQuestionViewModel) } };
+
+						<a class="btn btn-outline-success float-start float-md-none invisible"
+							id="btn1"
+							asp-controller="Quiz"
+							asp-action="Question"
+							asp-all-route-data="keyValues">
+							Proceed
+						</a>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

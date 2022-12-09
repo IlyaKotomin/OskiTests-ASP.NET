@@ -1,0 +1,53 @@
+﻿@using System.Text.Json
+@model CompliteQuestionViewModel
+
+@{
+	ViewData["Title"] = Model.QuestionViewModel!.Question;
+}
+
+@{
+	Random random = new Random();
+	List<string> answers = new List<string>();
+
+	foreach (var wrongAnswer in Model.QuestionViewModel.Answers!)
+		answers.Add(wrongAnswer.Content!);
+
+	answers.Add(Model.QuestionViewModel.CorrectAnswer!);
+
+	for (int i = answers.Count - 1; i >= 1; i--)
+	{
+		int j = random.Next(i + 1);
+		var temp = answers[j];
+		answers[j] = answers[i];
+		answers[i] = temp;
+	}
+
+	<div class="row col-md-8 offset-2">
+		<p>
+			<h4>@Model.QuestionViewModel.Question</h4>
+		</p>
+			@using (Html.BeginForm("SubmitQuestion", "Quiz", FormMethod.Post))
+			{
+				<form class="row" method="post" asp-controller="Home" asp-action="Index">
+				@{
+					for (int i = 0; i < answers.Count; i++)
+					{
+						@Html.RadioButtonFor(model => model.LastAnswer, answers[i], htmlAttributes: new { onclick = "show()"});
+						@answers[i]
+						<br/>
+					}
+					Dictionary<string, string> keyValues = new Dictionary<string, string>() { { "submit", JsonSerializer.Serialize(Model) } };
+
+					<input id="submitButton" class="btn btn-outline-primary invisible" asp-action="SubmitQuestion" asp-all-route-data="keyValues" type="submit" value="Answer">
+				}
+				</form>
+			}
+	</div>
+}
+
+<script>
+	function show(){
+		var submitButton = document.getElementById("submitButton");
+		submitButton.classList.remove("invisible");
+	}
+</script>

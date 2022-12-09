@@ -28,7 +28,7 @@
                     {
                         <div class="col-md-12">
                             <div class="card-footer">    
-                                <a class="btn btn-outline-success float-start float-md-none">Start</a>
+                                <a class="btn btn-outline-success float-start float-md-none" asp-controller="Quiz" asp-action="Index" asp-route-id="@quiz.Id">Start</a>
                                 @if (User.IsInRole(UserRoles.Admin))
                                 {
                                     <a class="btn btn-outline-secondary">Edit</a>
