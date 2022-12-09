@@ -65,9 +65,12 @@ namespace OskiTests.Controllers
             if (user.ComplitedQuizzes == null)
                 user.ComplitedQuizzes = new List<QuizViewModel>();
 
-            result.Quiz = await _quizService.GetQuizById(result.Quiz!.Id!)!;
+            result!.Quiz = await _quizService.GetQuizById(result.Quiz!.Id!)!;
             
+
             user.ComplitedQuizzes!.Add(result!.Quiz!);
+
+            await _userManager.UpdateAsync(user);
 
             return View(result);
         }

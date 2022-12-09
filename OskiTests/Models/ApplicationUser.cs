@@ -8,6 +8,7 @@ namespace OskiTests.Models
         [Display(Name = "Full name")]
         public string? FullName { get; set; }
 
+        [Display(Name = "Complited testsS")]
         public List<QuizViewModel>? ComplitedQuizzes { get; set; }
     }
 }

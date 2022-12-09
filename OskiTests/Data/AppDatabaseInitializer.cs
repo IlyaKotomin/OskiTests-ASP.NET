@@ -15,6 +15,10 @@ namespace OskiTests.Data
                 context.Database.EnsureCreated();
 
 
+                if (context.Quizzes.Any())
+                    return;
+
+
                 QuizViewModel testQuiz = new()
                 {
                     Name = "This is a test Quiz!eqwe (1)",
