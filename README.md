@@ -4,7 +4,7 @@ for full-stack c# developer
 
 ## Installation
 
-Install SQL fatabase
+Install SQL database
 
 ```json
 {
